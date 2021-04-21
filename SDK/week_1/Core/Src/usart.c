@@ -22,6 +22,10 @@
 
 /* USER CODE BEGIN 0 */
 uint8_t hexEND[3] = {0xFF,0xFF,0xFF};
+uint8_t usart1RxBuffer[RXBUFFERSIZE];
+uint8_t usart2RxBuffer[RXBUFFERSIZE];
+uint16_t USART1_RX_STA=0;       //接收状态标记
+uint16_t USART2_RX_STA=0; 
 //重定向c库函数printf到DEBUG_USARTx
 int fputc(int ch, FILE *f)
 {
@@ -274,7 +278,51 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart->Instance==USART1)//如果是串口1
+	{
+		if((USART1_RX_STA&0x8000)==0)//接收未完成
+		{
+			if(USART1_RX_STA&0x4000)//接收到了0x0d
+			{
+				if(usart1RxBuffer[0]!=0x0a)USART1_RX_STA=0;//接收错误,重新开始
+				else USART1_RX_STA=0x8000;	//接收完成了
+			}
+			else //还没收到0X0D
+			{	
+				if(usart1RxBuffer[0]==0x0d)USART1_RX_STA|=0x4000;
+				else
+				{
+					usartScreenReceive[USART1_RX_STA&0X3FFF]=usart1RxBuffer[0] ;
+					USART1_RX_STA++;
+					if(USART1_RX_STA>(50-1))USART1_RX_STA=0;//接收数据错误,重新开始接收	  
+				}		 
+			}
+		}
+	}
+	else if(huart->Instance==USART2)
+	{
+		if((USART2_RX_STA&0x8000)==0)//接收未完成
+		{
+			if(USART2_RX_STA&0x4000)//接收到了0x0d
+			{
+				if(usart2RxBuffer[0]!=0x0a)USART2_RX_STA=0;//接受错误重新开始
+				else USART2_RX_STA=0x8000;//接收完了
+			}//还没收到0x0d
+			else 
+			{
+				if(usart2RxBuffer[0]==0x0d)USART2_RX_STA|=0x4000;
+				else
+				{
+					usartDistanceReceive[USART2_RX_STA&0x3fff]=usart2RxBuffer[0];
+					USART2_RX_STA++;
+					if(USART2_RX_STA>(50-1))USART1_RX_STA=0;//接收数据错误，重新开始。
+				}
+			}
+		}
+	}
+}
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
