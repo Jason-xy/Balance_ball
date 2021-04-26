@@ -48,12 +48,12 @@
 /* USER CODE BEGIN PV */
 
 //全局变量
-short Degree_Mutex = 1;//角度互斥�??
+short Degree_Mutex = 1;//角度互斥
 float Degree;//横杆角度
 char usartScreenSend[50] = {0};//串口屏发送缓冲区
 char usartScreenReceive[50] = {0};//串口屏接收缓冲区
-char usartDistanceReceive[20] = {0};//OpenMV接收缓冲�??
-char usartMotorSend[20] = {0};//电机控制发�?�缓冲区
+char usartDistanceReceive[20] = {0};//OpenMV接收缓冲
+char usartMotorSend[20] = {0};//电机控制缓冲区
 
 
 /* USER CODE END PV */
