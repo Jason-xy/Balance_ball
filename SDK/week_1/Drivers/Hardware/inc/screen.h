@@ -7,6 +7,10 @@
 
 //发送结束
 void sendEnd(void);
+//发送距离
+void sendDistance(void);
+//目标距离
+void sendSetDistance(void);
 //显示波形
 void drawWaves(void);
 //发送角度
