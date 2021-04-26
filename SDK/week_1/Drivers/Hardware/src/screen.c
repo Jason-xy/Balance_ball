@@ -10,7 +10,7 @@ void sendDegree(void){
 	memset(usartScreenSend, 0, 50*sizeof(char));
 	if(Degree_Mutex){
 		Degree_Mutex = 0;
-		sprintf(usartScreenSend,"t1.txt=\"Degree: %.4f\"", Degree);
+		sprintf(usartScreenSend,"t1.txt=\"Deg: %.1f\"", Degree);
 		Degree_Mutex = 1;
 		HAL_UART_Transmit(&USART_SCREEN, (uint8_t*)usartScreenSend, strlen(usartScreenSend), 0xfff);
 		sendEnd();
@@ -44,10 +44,18 @@ void sendSetDistance(void){
 //显示波形
 void drawWaves(void){
 	memset(usartScreenSend, 0, 50*sizeof(char));
-	if(Degree_Mutex){
-		Degree_Mutex = 0;
-		sprintf(usartScreenSend,"add 1,0,%d", (int)Degree+100);
-		Degree_Mutex = 1;
+	if(SetDistance_Mutex){
+		SetDistance_Mutex = 0;
+		sprintf(usartScreenSend,"add 1,0,%d", (int)((SetDistance+50)/300.0f*200));
+		SetDistance_Mutex = 1;
+		HAL_UART_Transmit(&USART_SCREEN, (uint8_t*)usartScreenSend, strlen(usartScreenSend), 0xfff);
+		sendEnd();
+	}
+	memset(usartScreenSend, 0, 50*sizeof(char));
+	if(Distance_Mutex){
+		Distance_Mutex = 0;
+		sprintf(usartScreenSend,"add 1,1,%d", (int)((Distance+50)/300.0f*200));
+		Distance_Mutex = 1;
 		HAL_UART_Transmit(&USART_SCREEN, (uint8_t*)usartScreenSend, strlen(usartScreenSend), 0xfff);
 		sendEnd();
 	}

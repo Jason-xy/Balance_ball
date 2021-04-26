@@ -300,6 +300,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 				}		 
 			}
 		}
+		HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
 	}
 	else if(huart->Instance==USART2)
 	{
@@ -321,6 +322,35 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 				}
 			}
 		}
+	}
+	HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 1);
+}
+
+void readDistance(void){
+	if(USART1_RX_STA == 0x8000){
+		if(SetDistance_Mutex == 1){
+			SetDistance_Mutex = 0;
+			SetDistance = atoi(usartScreenReceive);
+			SetDistance_Mutex = 1;
+		}
+		USART1_RX_STA = 0;//清空标志
+		memset(usartScreenReceive, 0, 10);//清空缓冲区
+	}
+}
+
+void readSetDistance(void){
+	if(USART2_RX_STA == 0x8000){
+		if(Distance_Mutex == 1){
+			Distance_Mutex = 0;
+			if(usartDistanceReceive[0] == 0x0F){
+				if(usartDistanceReceive[0] + usartDistanceReceive[1] + usartDistanceReceive[2] == usartDistanceReceive[3]){
+					Distance = usartDistanceReceive[1] << 4 | usartDistanceReceive[2];
+				}
+			}
+			Distance_Mutex = 1;
+		}
+		USART2_RX_STA = 0;//清空标志
+		memset(usartDistanceReceive, 0, 10);//清空缓冲区
 	}
 }
 /* USER CODE END 1 */

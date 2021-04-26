@@ -44,6 +44,9 @@ extern uint8_t usart1RxBuffer[RXBUFFERSIZE];
 extern uint8_t usart2RxBuffer[RXBUFFERSIZE];
 extern uint16_t USART1_RX_STA;       //接收状态标记
 extern uint16_t USART2_RX_STA; 
+
+void readDistance(void);
+void readSetDistance(void);
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);

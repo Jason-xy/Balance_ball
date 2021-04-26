@@ -218,9 +218,9 @@ void TIM1_UP_IRQHandler(void)
 		Degree_Mutex = 1;
 	}
   }else if(mainEventCount == 2){
-  
+		readDistance();
   }else if(mainEventCount == 3){
-	  
+	  readSetDistance();
   }else if(mainEventCount == 4){
 	  
   }else if(mainEventCount == 5){

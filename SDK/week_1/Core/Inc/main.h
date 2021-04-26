@@ -66,12 +66,12 @@ void Error_Handler(void);
 extern short Degree_Mutex;
 extern float Degree;//横杆角度
 extern short Distance_Mutex;//距离互斥
-extern int Distance;//小球实际距离 
+extern short Distance;//小球实际距离 
 extern short SetDistance_Mutex;//目标距离互斥
-extern int SetDistance;//小球目标距离
+extern short SetDistance;//小球目标距离
 extern char usartScreenSend[50];//串口屏发送缓冲区
-extern char usartScreenReceive[50];//串口屏接收缓冲区
-extern char usartDistanceReceive[20];//OpenMV接收缓冲
+extern char usartScreenReceive[10];//串口屏接收缓冲区
+extern char usartDistanceReceive[10];//OpenMV接收缓冲
 extern char usartMotorSend[20];//电机控制缓冲区
 /* USER CODE END Private defines */
 
