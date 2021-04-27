@@ -286,8 +286,12 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		{
 			if(USART1_RX_STA&0x4000)//接收到了0x0d
 			{
-				if(usart1RxBuffer[0]!=0x0a)USART1_RX_STA=0;//接收错误,重新开始
-				else USART1_RX_STA=0x8000;	//接收完成了
+				if(usart1RxBuffer[0]!=0x0a)
+        {
+          USART1_RX_STA=0;//接收错误,重新开始
+          memset(usartScreenReceive, 0, 10);
+        }
+        else USART1_RX_STA=0x8000;	//接收完成了
 			}
 			else //还没收到0X0D
 			{	
@@ -296,7 +300,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 				{
 					usartScreenReceive[USART1_RX_STA&0X3FFF]=usart1RxBuffer[0] ;
 					USART1_RX_STA++;
-					if(USART1_RX_STA>(50-1))USART1_RX_STA=0;//接收数据错误,重新开始接收	  
+					if(USART1_RX_STA>(10-1))
+          {
+            USART1_RX_STA=0;//接收数据错误,重新开始接收
+            memset(usartScreenReceive, 0, 10);
+          }	  
 				}		 
 			}
 		}
@@ -308,8 +316,12 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		{
 			if(USART2_RX_STA&0x4000)//接收到了0x0d
 			{
-				if(usart2RxBuffer[0]!=0x0a)USART2_RX_STA=0;//接受错误重新开始
-				else USART2_RX_STA=0x8000;//接收完了
+				if(usart2RxBuffer[0]!=0x0a)
+        {
+          USART2_RX_STA=0;//接受错误重新开始
+          memset(usartDistanceReceive, 0, 10);
+        }
+        else USART2_RX_STA=0x8000;//接收完了
 			}//还没收到0x0d
 			else 
 			{
@@ -318,8 +330,12 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 				{
 					usartDistanceReceive[USART2_RX_STA&0x3fff]=usart2RxBuffer[0];
 					USART2_RX_STA++;
-					if(USART2_RX_STA>(50-1))USART1_RX_STA=0;//接收数据错误，重新开始。
-				}
+					if(USART2_RX_STA>(10-1))
+          {
+            USART1_RX_STA=0;//接收数据错误，重新开始。
+            memset(usartDistanceReceive, 0, 10);          
+          }
+        }
 			}
 		}
 	}
