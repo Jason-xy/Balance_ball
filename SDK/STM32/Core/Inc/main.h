@@ -72,7 +72,9 @@ extern short SetDistance;//小球目标距离
 extern char usartScreenSend[50];//串口屏发送缓冲区
 extern uint8_t usartScreenReceive[10];//串口屏接收缓冲区
 extern uint8_t usartDistanceReceive[10];//OpenMV接收缓冲
-extern char usartMotorSend[20];//电机控制缓冲�?
+extern uint8_t sevoID;//舵机ID
+extern uint16_t Position;//目标位置
+extern uint16_t Time;//时间限制
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

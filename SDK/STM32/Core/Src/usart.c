@@ -24,7 +24,7 @@
 uint8_t hexEND[3] = {0xFF,0xFF,0xFF};
 uint8_t usart1RxBuffer[RXBUFFERSIZE];
 uint8_t usart2RxBuffer[RXBUFFERSIZE];
-uint16_t USART1_RX_STA=0;       //接收状态标志
+uint16_t USART1_RX_STA=0;       //接收状�?�标�?
 uint16_t USART2_RX_STA=0; 
 //重定向c库函数printf到DEBUG_USARTx
 int fputc(int ch, FILE *f)
@@ -109,7 +109,7 @@ void MX_USART3_UART_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
+  huart3.Init.BaudRate = 9600;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
@@ -290,7 +290,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		if((USART1_RX_STA & 0xC000) == 0)//接收数据
 		{
 			if(usart1RxBuffer[0] == 0x0D)
-				USART1_RX_STA |= 0x8000;//状态转换
+				USART1_RX_STA |= 0x8000;//状�?�转�?
 			else if(USART1_RX_STA < 9 && usart1RxBuffer[0] != 0x0A)
 				usartScreenReceive[USART1_RX_STA++] = usart1RxBuffer[0];
 			else//接收出错
@@ -314,7 +314,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		if((USART2_RX_STA & 0xC000) == 0)//接收数据
 		{   
 			if(usart2RxBuffer[0] == 0x0D)
-				USART2_RX_STA |= 0x8000;//状态转换
+				USART2_RX_STA |= 0x8000;//状�?�转�?
 			else if(USART2_RX_STA < 9)
 				usartDistanceReceive[USART2_RX_STA++] = usart2RxBuffer[0];
 			else//接收出错

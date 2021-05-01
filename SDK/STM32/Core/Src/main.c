@@ -57,7 +57,10 @@ short SetDistance;//小球目标距离
 char usartScreenSend[50] = {0};//串口屏发送缓冲区
 uint8_t usartScreenReceive[10] = {0};//串口屏接收缓冲区
 uint8_t usartDistanceReceive[10] = {0};//OpenMV接收缓冲
-char usartMotorSend[20] = {0};//电机控制缓冲区
+uint8_t servoID = 1;//舵机ID
+uint16_t Position = 0;//目标位置
+uint16_t Time = 0;//时间限制
+
 
 
 /* USER CODE END PV */
@@ -121,11 +124,13 @@ int main(void)
 		Degree_Mutex = 0;
 		mpu_dmp_get_data(&Degree, &yaw, &row);
 		Degree_Mutex = 1;
-	}
+		}
 		sendDegree();
 		sendDistance();
 		sendSetDistance();
 		drawWaves();
+		
+		moveServo(servoID, Position, Time);      
 	
     /* USER CODE END WHILE */
 
