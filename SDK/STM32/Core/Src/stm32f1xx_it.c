@@ -43,7 +43,6 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 int mainEventCount = 0;
-float yaw, row;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -213,15 +212,11 @@ void TIM1_UP_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_UP_IRQn 1 */
   if(mainEventCount == 1){
-	if(Degree_Mutex){
-		Degree_Mutex = 0;
-		mpu_dmp_get_data(&Degree, &yaw, &row);
-		Degree_Mutex = 1;
-	}
+	
   }else if(mainEventCount == 2){
-		readDistance();
+	  //readDistance();
   }else if(mainEventCount == 3){
-	  readSetDistance();
+	  //readSetDistance();
   }else if(mainEventCount == 4){
 	  
   }else if(mainEventCount == 5){

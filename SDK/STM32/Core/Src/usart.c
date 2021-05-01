@@ -285,88 +285,75 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 /* USER CODE BEGIN 1 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if(huart->Instance==USART1)//如果是串�?1
+	if(huart->Instance == USART1)
 	{
-		if((USART1_RX_STA&0x8000)==0)//接收未完�?
+		if((USART1_RX_STA & 0xC000) == 0)//接收数据
 		{
-			if(USART1_RX_STA&0x4000)//接收到了0x0d
+			if(usart1RxBuffer[0] == 0x0D)
+				USART1_RX_STA |= 0x8000;//状态转换
+			else if(USART1_RX_STA < 9 && usart1RxBuffer[0] != 0x0A)
+				usartScreenReceive[USART1_RX_STA++] = usart1RxBuffer[0];
+			else//接收出错
 			{
-				if(usart1RxBuffer[0]!=0x0a)
-        {
-          USART1_RX_STA=0;//接收错误,重新接收
-          memset(usartScreenReceive, 0, 10);
-        }
-        else USART1_RX_STA|=0x8000;	//接收完成
-			}
-			else //还没收到0X0D
-			{	
-				if(usart1RxBuffer[0]==0x0d)USART1_RX_STA|=0x4000;
-				else
-				{
-					usartScreenReceive[USART1_RX_STA&0X3FFF]=usart1RxBuffer[0] ;
-					USART1_RX_STA++;
-					if(USART1_RX_STA>(10-1))
-          {
-            USART1_RX_STA=0;//接收数据错误,重新接收
-            memset(usartScreenReceive, 0, 10);
-          }	  
-				}		 
-			}
+				USART1_RX_STA=0;
+				memset(usartScreenReceive, 0, 10);
+			}	
+		}
+		else if(USART1_RX_STA&0x8000)//接收完成
+		{
+			 readSetDistance();
+		}
+		else//其他情况
+		{
+			USART1_RX_STA=0;
+			memset(usartScreenReceive, 0, 10);
 		}
 	}
-	else if(huart->Instance==USART2)
+	else if(huart->Instance == USART2)
 	{
-		if((USART2_RX_STA&0x8000)==0)//接收未完�?
+		if((USART2_RX_STA & 0xC000) == 0)//接收数据
+		{   
+			if(usart2RxBuffer[0] == 0x0D)
+				USART2_RX_STA |= 0x8000;//状态转换
+			else if(USART2_RX_STA < 9)
+				usartDistanceReceive[USART2_RX_STA++] = usart2RxBuffer[0];
+			else//接收出错
+			{
+				USART2_RX_STA=0;
+				memset(usartDistanceReceive, 0, 10);
+			}	
+		}
+		else if(USART2_RX_STA&0x8000)//接收完成
 		{
-			if(USART2_RX_STA&0x4000)//接收到了0x0d
-			{
-				if(usart2RxBuffer[0]!=0x0a)
-        {
-          USART2_RX_STA=0;//接受错误重新接收
-          memset(usartDistanceReceive, 0, 10);
-        }
-        else USART2_RX_STA|=0x8000;//接收完了
-			}//还没收到0x0d
-			else 
-			{
-				if(usart2RxBuffer[0]==0x0d)USART2_RX_STA|=0x4000;
-				else
-				{
-					usartDistanceReceive[USART2_RX_STA&0x3fff]=usart2RxBuffer[0];
-					USART2_RX_STA++;
-					if(USART2_RX_STA>(10-1))
-          {
-            USART1_RX_STA=0;//接收数据错误，重新开�?
-            memset(usartDistanceReceive, 0, 10);          
-          }
-        }
-			}
+			 readDistance();
+		}
+		else//其他情况
+		{
+			USART2_RX_STA=0;
+			memset(usartDistanceReceive, 0, 10);
 		}
 	}
 }
 
 void readDistance(void){
-	if(USART1_RX_STA & 0x8000){
-		if(SetDistance_Mutex == 1){
-			SetDistance_Mutex = 0;
-			SetDistance = atoi((char*)usartScreenReceive);
-			SetDistance_Mutex = 1;
-		}
-		USART1_RX_STA = 0;//清空标志
-		memset(usartScreenReceive, 0, 10);//清空缓冲�?
+	if(Distance_Mutex == 1){
+		Distance_Mutex = 0;
+		Distance = atoi((char*)usartDistanceReceive);
+		Distance_Mutex = 1;
 	}
+	USART2_RX_STA = 0;//清空标志
+	memset(usartDistanceReceive, 0, 10);//清空缓冲
 }
 
 void readSetDistance(void){
-	if(USART2_RX_STA & 0x8000){
-		if(Distance_Mutex == 1){
-			Distance_Mutex = 0;
-			Distance = atoi((char*)usartDistanceReceive);
-			Distance_Mutex = 1;
-		}
-		USART2_RX_STA = 0;//清空标志
-		memset(usartDistanceReceive, 0, 10);//清空缓冲�?
+	if(SetDistance_Mutex == 1){
+		SetDistance_Mutex = 0;
+		SetDistance = atoi((char*)usartScreenReceive);
+		SetDistance_Mutex = 1;
 	}
+	USART1_RX_STA = 0;//清空标志
+	memset(usartScreenReceive, 0, 10);//清空缓冲
+	
 }
 /* USER CODE END 1 */
 

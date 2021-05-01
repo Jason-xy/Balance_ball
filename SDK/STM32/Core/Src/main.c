@@ -65,7 +65,7 @@ char usartMotorSend[20] = {0};//电机控制缓冲区
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+ float yaw, row;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -109,14 +109,19 @@ int main(void)
   /* USER CODE BEGIN 2 */
   mpu_dmp_init();
   HAL_TIM_Base_Start_IT(&htim1);
-	HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 8);
-  HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 8);
+	HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
+  HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
+		if(Degree_Mutex){
+		Degree_Mutex = 0;
+		mpu_dmp_get_data(&Degree, &yaw, &row);
+		Degree_Mutex = 1;
+	}
 		sendDegree();
 		sendDistance();
 		sendSetDistance();

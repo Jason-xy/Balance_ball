@@ -33,7 +33,7 @@ uint8_t MPU_Write_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
 {
   extern I2C_HandleTypeDef MPU_I2C;
   HAL_I2C_Mem_Write(&MPU_I2C, (addr<<1), reg, I2C_MEMADD_SIZE_8BIT, buf, len, 0xfff);
-  HAL_Delay(1);
+  //HAL_Delay(1);
   return 0;
 }
 
@@ -48,7 +48,7 @@ uint8_t MPU_Read_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
 { 
   extern I2C_HandleTypeDef MPU_I2C;
   HAL_I2C_Mem_Read(&MPU_I2C, (addr<<1), reg, I2C_MEMADD_SIZE_8BIT, buf, len, 0xfff);
-  HAL_Delay(1);
+  //HAL_Delay(1);
   return 0;	
 }
 /* USER CODE END 0 */

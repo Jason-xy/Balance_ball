@@ -465,7 +465,7 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\stm32\startup_stm32f103xb.d -o.\stm32\startup_stm32f103xb.o -I.\
 RTE\_STM32 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\Keil_v
 5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include --predefine="__MICROLIB SETA
- 1" --predefine="__UVISION_VERSION SETA 531" --predefine="_RTE_ SETA 1" --prede
+ 1" --predefine="__UVISION_VERSION SETA 532" --predefine="_RTE_ SETA 1" --prede
 fine="STM32F10X_MD SETA 1" --predefine="_RTE_ SETA 1" --list=startup_stm32f103x
 b.lst startup_stm32f103xb.s
 
