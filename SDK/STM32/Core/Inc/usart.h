@@ -31,7 +31,7 @@ extern "C" {
 #include "stdio.h"
 #include "string.h"
 #include "stdlib.h"
-#define RXBUFFERSIZE   1 //缓冲区大小
+#define RXBUFFERSIZE   10 //缓冲区大小?
 /* USER CODE END Includes */
 
 extern UART_HandleTypeDef huart1;
@@ -42,7 +42,7 @@ extern UART_HandleTypeDef huart3;
 extern uint8_t hexEND[3]; 
 extern uint8_t usart1RxBuffer[RXBUFFERSIZE];
 extern uint8_t usart2RxBuffer[RXBUFFERSIZE];
-extern uint16_t USART1_RX_STA;       //接收状态标记
+extern uint16_t USART1_RX_STA;       //接收状态标志
 extern uint16_t USART2_RX_STA; 
 
 void readDistance(void);

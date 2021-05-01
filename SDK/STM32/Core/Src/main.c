@@ -55,8 +55,8 @@ short Distance;//小球实际距离
 short SetDistance_Mutex = 1;//目标距离互斥
 short SetDistance;//小球目标距离
 char usartScreenSend[50] = {0};//串口屏发送缓冲区
-char usartScreenReceive[10] = {0};//串口屏接收缓冲区
-char usartDistanceReceive[10] = {0};//OpenMV接收缓冲
+uint8_t usartScreenReceive[10] = {0};//串口屏接收缓冲区
+uint8_t usartDistanceReceive[10] = {0};//OpenMV接收缓冲
 char usartMotorSend[20] = {0};//电机控制缓冲区
 
 
@@ -107,10 +107,10 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
-  HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 1);
   mpu_dmp_init();
   HAL_TIM_Base_Start_IT(&htim1);
+	HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 8);
+  HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 8);
   /* USER CODE END 2 */
 
   /* Infinite loop */

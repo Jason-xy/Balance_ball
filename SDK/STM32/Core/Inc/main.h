@@ -70,9 +70,9 @@ extern short Distance;//小球实际距离
 extern short SetDistance_Mutex;//目标距离互斥
 extern short SetDistance;//小球目标距离
 extern char usartScreenSend[50];//串口屏发送缓冲区
-extern char usartScreenReceive[10];//串口屏接收缓冲区
-extern char usartDistanceReceive[10];//OpenMV接收缓冲
-extern char usartMotorSend[20];//电机控制缓冲区
+extern uint8_t usartScreenReceive[10];//串口屏接收缓冲区
+extern uint8_t usartDistanceReceive[10];//OpenMV接收缓冲
+extern char usartMotorSend[20];//电机控制缓冲�?
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

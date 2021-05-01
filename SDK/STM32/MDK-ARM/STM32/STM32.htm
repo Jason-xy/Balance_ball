@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\STM32\STM32.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\STM32\STM32.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Apr 27 11:19:05 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 01 02:06:41 2021
 <BR><P>
 <H3>Maximum Stack Usage =        400 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -65,7 +65,7 @@ Function Pointers
  <LI><a href="#[28]">TIM4_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[38]">UART_DMAAbortOnError</a> from stm32f1xx_hal_uart.o(i.UART_DMAAbortOnError) referenced from stm32f1xx_hal_uart.o(i.HAL_UART_IRQHandler)
  <LI><a href="#[2f]">USART1_IRQHandler</a> from stm32f1xx_it.o(i.USART1_IRQHandler) referenced from startup_stm32f103xb.o(RESET)
- <LI><a href="#[30]">USART2_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
+ <LI><a href="#[30]">USART2_IRQHandler</a> from stm32f1xx_it.o(i.USART2_IRQHandler) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[31]">USART3_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[34]">USBWakeUp_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[1d]">USB_HP_CAN1_TX_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
@@ -216,9 +216,6 @@ Global Symbols
 <P><STRONG><a name="[28]"></a>TIM4_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f103xb.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[30]"></a>USART2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f103xb.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
-</UL>
 <P><STRONG><a name="[31]"></a>USART3_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f103xb.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
@@ -271,8 +268,8 @@ Global Symbols
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawWaves
 </UL>
 
-<P><STRONG><a name="[a8]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<P><STRONG><a name="[a6]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[110]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -300,7 +297,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strtol
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readDistance
+<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readSetDistance
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readDistance
 </UL>
 
 <P><STRONG><a name="[45]"></a>__aeabi_fadd</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, fadd.o(.text))
@@ -309,7 +307,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 </UL>
@@ -319,7 +317,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
 </UL>
@@ -331,7 +329,7 @@ Global Symbols
 <P><STRONG><a name="[e0]"></a>__aeabi_fmul</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, fmul.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawWaves
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
@@ -344,7 +342,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawWaves
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
@@ -356,7 +354,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;asin
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
@@ -368,7 +366,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawWaves
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
@@ -394,7 +392,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f2]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendDegree
 </UL>
 
@@ -403,7 +401,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 </UL>
 
 <P><STRONG><a name="[bd]"></a>__aeabi_cfcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cfcmple.o(.text))
@@ -609,13 +607,13 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[a0]"></a>Error_Handler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, main.o(i.Error_Handler))
-<BR><BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<P><STRONG><a name="[9e]"></a>Error_Handler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, main.o(i.Error_Handler))
+<BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[8e]"></a>HAL_DMA_Abort_IT</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, stm32f1xx_hal_dma.o(i.HAL_DMA_Abort_IT))
@@ -629,8 +627,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
@@ -643,26 +641,26 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_MspInit
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[9e]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<P><STRONG><a name="[9c]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[5f]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetTick))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnTXEFlagUntilTimeout
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnRXNEFlagUntilTimeout
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnFlagUntilTimeout
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnBTFFlagUntilTimeout
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 
 <P><STRONG><a name="[60]"></a>HAL_I2C_Init</STRONG> (Thumb, 446 bytes, Stack size 16 bytes, stm32f1xx_hal_i2c.o(i.HAL_I2C_Init))
@@ -671,7 +669,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_MspInit
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
 </UL>
 
 <P><STRONG><a name="[63]"></a>HAL_I2C_Mem_Read</STRONG> (Thumb, 850 bytes, Stack size 48 bytes, stm32f1xx_hal_i2c.o(i.HAL_I2C_Mem_Read))
@@ -682,7 +680,7 @@ Global Symbols
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_RequestMemoryRead
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 </UL>
 
 <P><STRONG><a name="[67]"></a>HAL_I2C_Mem_Write</STRONG> (Thumb, 348 bytes, Stack size 48 bytes, stm32f1xx_hal_i2c.o(i.HAL_I2C_Mem_Write))
@@ -694,7 +692,7 @@ Global Symbols
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_RequestMemoryWrite
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 
 <P><STRONG><a name="[61]"></a>HAL_I2C_MspInit</STRONG> (Thumb, 104 bytes, Stack size 32 bytes, i2c.o(i.HAL_I2C_MspInit))
@@ -705,7 +703,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Init
 </UL>
 
-<P><STRONG><a name="[a6]"></a>HAL_IncTick</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_IncTick))
+<P><STRONG><a name="[a4]"></a>HAL_IncTick</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_IncTick))
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
@@ -762,7 +760,7 @@ Global Symbols
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[76]"></a>HAL_RCC_GetHCLKFreq</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq))
@@ -799,7 +797,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Delay
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[70]"></a>HAL_SYSTICK_Config</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, stm32f1xx_hal_cortex.o(i.HAL_SYSTICK_Config))
@@ -818,10 +816,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a2]"></a>HAL_TIMEx_MasterConfigSynchronization</STRONG> (Thumb, 118 bytes, Stack size 12 bytes, stm32f1xx_hal_tim_ex.o(i.HAL_TIMEx_MasterConfigSynchronization))
+<P><STRONG><a name="[a0]"></a>HAL_TIMEx_MasterConfigSynchronization</STRONG> (Thumb, 118 bytes, Stack size 12 bytes, stm32f1xx_hal_tim_ex.o(i.HAL_TIMEx_MasterConfigSynchronization))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = HAL_TIMEx_MasterConfigSynchronization
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
 </UL>
 
 <P><STRONG><a name="[7a]"></a>HAL_TIM_Base_Init</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_Base_Init))
@@ -830,7 +828,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
 </UL>
 
 <P><STRONG><a name="[7b]"></a>HAL_TIM_Base_MspInit</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, tim.o(i.HAL_TIM_Base_MspInit))
@@ -854,7 +852,7 @@ Global Symbols
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITRx_SetConfig
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETR_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
 </UL>
 
 <P><STRONG><a name="[84]"></a>HAL_TIM_IC_CaptureCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_IC_CaptureCallback))
@@ -897,7 +895,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8b]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 334 bytes, Stack size 32 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; HAL_UART_Receive_IT
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = HAL_UART_IRQHandler &rArr; HAL_DMA_Abort_IT
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
@@ -906,7 +904,8 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTransmit_IT
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[92]"></a>HAL_UART_Init</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_Init))
@@ -915,12 +914,12 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 </UL>
 
-<P><STRONG><a name="[93]"></a>HAL_UART_MspInit</STRONG> (Thumb, 344 bytes, Stack size 32 bytes, usart.o(i.HAL_UART_MspInit))
+<P><STRONG><a name="[93]"></a>HAL_UART_MspInit</STRONG> (Thumb, 366 bytes, Stack size 32 bytes, usart.o(i.HAL_UART_MspInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
@@ -930,26 +929,23 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 
-<P><STRONG><a name="[96]"></a>HAL_UART_Receive_IT</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_Receive_IT))
+<P><STRONG><a name="[ac]"></a>HAL_UART_Receive_IT</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_Receive_IT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = HAL_UART_Receive_IT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
+<BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[95]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 298 bytes, Stack size 8 bytes, usart.o(i.HAL_UART_RxCpltCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_UART_RxCpltCallback &rArr; HAL_UART_Receive_IT
-</UL>
-<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
-</UL>
-<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
+<P><STRONG><a name="[ab]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 284 bytes, Stack size 0 bytes, usart.o(i.HAL_UART_RxCpltCallback))
+<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
 </UL>
 
-<P><STRONG><a name="[97]"></a>HAL_UART_Transmit</STRONG> (Thumb, 210 bytes, Stack size 40 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_Transmit))
+<P><STRONG><a name="[95]"></a>HAL_UART_Transmit</STRONG> (Thumb, 210 bytes, Stack size 40 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_Transmit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendSetDistance
@@ -959,14 +955,14 @@ Global Symbols
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendEnd
 </UL>
 
-<P><STRONG><a name="[ac]"></a>HAL_UART_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_TxCpltCallback))
+<P><STRONG><a name="[aa]"></a>HAL_UART_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_TxCpltCallback))
 <BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTransmit_IT
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[9b]"></a>MPU_Read_Len</STRONG> (Thumb, 42 bytes, Stack size 32 bytes, i2c.o(i.MPU_Read_Len))
+<P><STRONG><a name="[99]"></a>MPU_Read_Len</STRONG> (Thumb, 42 bytes, Stack size 32 bytes, i2c.o(i.MPU_Read_Len))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = MPU_Read_Len &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
@@ -981,7 +977,7 @@ Global Symbols
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
 </UL>
 
-<P><STRONG><a name="[9c]"></a>MPU_Write_Len</STRONG> (Thumb, 42 bytes, Stack size 32 bytes, i2c.o(i.MPU_Write_Len))
+<P><STRONG><a name="[9a]"></a>MPU_Write_Len</STRONG> (Thumb, 42 bytes, Stack size 32 bytes, i2c.o(i.MPU_Write_Len))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
@@ -1005,58 +1001,58 @@ Global Symbols
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
 </UL>
 
-<P><STRONG><a name="[9d]"></a>MX_GPIO_Init</STRONG> (Thumb, 208 bytes, Stack size 24 bytes, gpio.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[9b]"></a>MX_GPIO_Init</STRONG> (Thumb, 208 bytes, Stack size 24 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9f]"></a>MX_I2C1_Init</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, i2c.o(i.MX_I2C1_Init))
+<P><STRONG><a name="[9d]"></a>MX_I2C1_Init</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, i2c.o(i.MX_I2C1_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = MX_I2C1_Init &rArr; HAL_I2C_Init &rArr; HAL_I2C_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a1]"></a>MX_TIM1_Init</STRONG> (Thumb, 102 bytes, Stack size 32 bytes, tim.o(i.MX_TIM1_Init))
+<P><STRONG><a name="[9f]"></a>MX_TIM1_Init</STRONG> (Thumb, 102 bytes, Stack size 32 bytes, tim.o(i.MX_TIM1_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = MX_TIM1_Init &rArr; HAL_TIM_Base_Init &rArr; HAL_TIM_Base_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_ConfigClockSource
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a3]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart.o(i.MX_USART1_UART_Init))
+<P><STRONG><a name="[a1]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart.o(i.MX_USART1_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MX_USART1_UART_Init &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a4]"></a>MX_USART2_UART_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart.o(i.MX_USART2_UART_Init))
+<P><STRONG><a name="[a2]"></a>MX_USART2_UART_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart.o(i.MX_USART2_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MX_USART2_UART_Init &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a5]"></a>MX_USART3_UART_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart.o(i.MX_USART3_UART_Init))
+<P><STRONG><a name="[a3]"></a>MX_USART3_UART_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart.o(i.MX_USART3_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MX_USART3_UART_Init &rArr; HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1076,17 +1072,17 @@ Global Symbols
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, stm32f1xx_it.o(i.SysTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysTick_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IncTick
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IncTick
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[a7]"></a>SystemClock_Config</STRONG> (Thumb, 102 bytes, Stack size 64 bytes, main.o(i.SystemClock_Config))
+<P><STRONG><a name="[a5]"></a>SystemClock_Config</STRONG> (Thumb, 102 bytes, Stack size 64 bytes, main.o(i.SystemClock_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1097,10 +1093,10 @@ Global Symbols
 <P><STRONG><a name="[23]"></a>TIM1_UP_IRQHandler</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, stm32f1xx_it.o(i.TIM1_UP_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 400<LI>Call Chain = TIM1_UP_IRQHandler &rArr; mpu_dmp_get_data &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; mpu_reset_fifo &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readSetDistance
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readDistance
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readSetDistance
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readDistance
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
@@ -1116,10 +1112,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_ConfigClockSource
 </UL>
 
-<P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, stm32f1xx_it.o(i.USART1_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = USART1_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; HAL_UART_Receive_IT
+<P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, stm32f1xx_it.o(i.USART1_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = USART1_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; HAL_DMA_Abort_IT
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
+</UL>
+<P><STRONG><a name="[30]"></a>USART2_IRQHandler</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, stm32f1xx_it.o(i.USART2_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = USART2_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; HAL_DMA_Abort_IT
+</UL>
+<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
@@ -1247,7 +1252,7 @@ Global Symbols
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 </UL>
 
 <P><STRONG><a name="[c4]"></a>atan</STRONG> (Thumb, 474 bytes, Stack size 40 bytes, atan.o(i.atan))
@@ -1276,7 +1281,7 @@ Global Symbols
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 </UL>
 
 <P><STRONG><a name="[c6]"></a>dmp_enable_6x_lp_quat</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_6x_lp_quat))
@@ -1343,7 +1348,7 @@ Global Symbols
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mget_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 </UL>
 
 <P><STRONG><a name="[da]"></a>dmp_set_accel_bias</STRONG> (Thumb, 300 bytes, Stack size 48 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_accel_bias))
@@ -1451,7 +1456,7 @@ Global Symbols
 <P><STRONG><a name="[e2]"></a>drawWaves</STRONG> (Thumb, 204 bytes, Stack size 24 bytes, screen.o(i.drawWaves))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = drawWaves &rArr; sendEnd &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendEnd
@@ -1467,7 +1472,7 @@ Global Symbols
 <P><STRONG><a name="[39]"></a>fputc</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, usart.o(i.fputc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = fputc &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printfa.o(i.__0printf)
 </UL>
@@ -1491,16 +1496,16 @@ Global Symbols
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendDegree
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawWaves
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_I2C1_Init
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
@@ -1520,7 +1525,7 @@ Global Symbols
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 </UL>
 
-<P><STRONG><a name="[a9]"></a>mpu_dmp_get_data</STRONG> (Thumb, 544 bytes, Stack size 136 bytes, inv_mpu.o(i.mpu_dmp_get_data))
+<P><STRONG><a name="[a7]"></a>mpu_dmp_get_data</STRONG> (Thumb, 544 bytes, Stack size 136 bytes, inv_mpu.o(i.mpu_dmp_get_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 392<LI>Call Chain = mpu_dmp_get_data &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; mpu_reset_fifo &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2
@@ -1590,8 +1595,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = mpu_init &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; set_int_enable &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
@@ -1607,7 +1612,7 @@ Global Symbols
 <P><STRONG><a name="[d5]"></a>mpu_load_firmware</STRONG> (Thumb, 180 bytes, Stack size 48 bytes, inv_mpu.o(i.mpu_load_firmware))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = mpu_load_firmware &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
@@ -1618,7 +1623,7 @@ Global Symbols
 <P><STRONG><a name="[ff]"></a>mpu_lp_accel_mode</STRONG> (Thumb, 218 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_lp_accel_mode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; set_int_enable &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_configure_fifo
@@ -1629,7 +1634,7 @@ Global Symbols
 <P><STRONG><a name="[d7]"></a>mpu_read_fifo_stream</STRONG> (Thumb, 186 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_read_fifo_stream))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = mpu_read_fifo_stream &rArr; mpu_reset_fifo &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
@@ -1638,8 +1643,8 @@ Global Symbols
 <P><STRONG><a name="[fd]"></a>mpu_read_mem</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_read_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = mpu_read_mem &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
@@ -1648,7 +1653,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = mpu_reset_fifo &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
@@ -1684,7 +1689,7 @@ Global Symbols
 <P><STRONG><a name="[fa]"></a>mpu_set_accel_fsr</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_accel_fsr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = mpu_set_accel_fsr &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
@@ -1694,8 +1699,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = mpu_set_bypass &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
@@ -1704,7 +1709,7 @@ Global Symbols
 <P><STRONG><a name="[f7]"></a>mpu_set_dmp_state</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_dmp_state))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = mpu_set_dmp_state &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; set_int_enable &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
@@ -1717,7 +1722,7 @@ Global Symbols
 <P><STRONG><a name="[f9]"></a>mpu_set_gyro_fsr</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_gyro_fsr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = mpu_set_gyro_fsr &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
@@ -1726,7 +1731,7 @@ Global Symbols
 <P><STRONG><a name="[100]"></a>mpu_set_int_latched</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_int_latched))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = mpu_set_int_latched &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
@@ -1735,7 +1740,7 @@ Global Symbols
 <P><STRONG><a name="[fb]"></a>mpu_set_lpf</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_lpf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = mpu_set_lpf &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
@@ -1746,7 +1751,7 @@ Global Symbols
 <P><STRONG><a name="[f5]"></a>mpu_set_sample_rate</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, inv_mpu.o(i.mpu_set_sample_rate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; set_int_enable &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
 </UL>
@@ -1760,7 +1765,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = mpu_set_sensors &rArr; mpu_set_int_latched &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
@@ -1771,7 +1776,7 @@ Global Symbols
 <P><STRONG><a name="[c7]"></a>mpu_write_mem</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_write_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = mpu_write_mem &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
@@ -1792,7 +1797,7 @@ Global Symbols
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 
-<P><STRONG><a name="[aa]"></a>readDistance</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, usart.o(i.readDistance))
+<P><STRONG><a name="[a8]"></a>readDistance</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, usart.o(i.readDistance))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = readDistance &rArr; atoi &rArr; strtol &rArr; _strtoul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoi
@@ -1800,8 +1805,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ab]"></a>readSetDistance</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, usart.o(i.readSetDistance))
-<BR><BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
+<P><STRONG><a name="[a9]"></a>readSetDistance</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, usart.o(i.readSetDistance))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = readSetDistance &rArr; atoi &rArr; strtol &rArr; _strtoul
+</UL>
+<BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoi
+</UL>
+<BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 </UL>
 
 <P><STRONG><a name="[f6]"></a>run_self_test</STRONG> (Thumb, 148 bytes, Stack size 48 bytes, inv_mpu.o(i.run_self_test))
@@ -1822,7 +1831,7 @@ Global Symbols
 <P><STRONG><a name="[ed]"></a>sendDegree</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, screen.o(i.sendDegree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = sendDegree &rArr; sendEnd &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendEnd
@@ -1835,7 +1844,7 @@ Global Symbols
 <P><STRONG><a name="[ee]"></a>sendDistance</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, screen.o(i.sendDistance))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = sendDistance &rArr; sendEnd &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendEnd
@@ -1847,7 +1856,7 @@ Global Symbols
 <P><STRONG><a name="[e6]"></a>sendEnd</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, screen.o(i.sendEnd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = sendEnd &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendSetDistance
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendDistance
@@ -1858,7 +1867,7 @@ Global Symbols
 <P><STRONG><a name="[ef]"></a>sendSetDistance</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, screen.o(i.sendSetDistance))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = sendSetDistance &rArr; sendEnd &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendEnd
@@ -1879,7 +1888,7 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[9a]"></a>I2C_IsAcknowledgeFailed</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, stm32f1xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed))
+<P><STRONG><a name="[98]"></a>I2C_IsAcknowledgeFailed</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, stm32f1xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnTXEFlagUntilTimeout
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnBTFFlagUntilTimeout
 </UL>
@@ -1888,7 +1897,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnTXEFlagUntilTimeout
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
@@ -1898,7 +1907,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnTXEFlagUntilTimeout
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
@@ -1907,7 +1916,7 @@ Local Symbols
 <P><STRONG><a name="[6a]"></a>I2C_WaitOnBTFFlagUntilTimeout</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, stm32f1xx_hal_i2c.o(i.I2C_WaitOnBTFFlagUntilTimeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = I2C_WaitOnBTFFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_IsAcknowledgeFailed
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_IsAcknowledgeFailed
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
@@ -1924,7 +1933,7 @@ Local Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Read
 </UL>
 
-<P><STRONG><a name="[99]"></a>I2C_WaitOnMasterAddressFlagUntilTimeout</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, stm32f1xx_hal_i2c.o(i.I2C_WaitOnMasterAddressFlagUntilTimeout))
+<P><STRONG><a name="[97]"></a>I2C_WaitOnMasterAddressFlagUntilTimeout</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, stm32f1xx_hal_i2c.o(i.I2C_WaitOnMasterAddressFlagUntilTimeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
@@ -1944,7 +1953,7 @@ Local Symbols
 <P><STRONG><a name="[69]"></a>I2C_WaitOnTXEFlagUntilTimeout</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, stm32f1xx_hal_i2c.o(i.I2C_WaitOnTXEFlagUntilTimeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = I2C_WaitOnTXEFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_IsAcknowledgeFailed
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_IsAcknowledgeFailed
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_RequestMemoryWrite
@@ -1999,15 +2008,15 @@ Local Symbols
 <P><STRONG><a name="[91]"></a>UART_EndTransmit_IT</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f1xx_hal_uart.o(i.UART_EndTransmit_IT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = UART_EndTransmit_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
 <P><STRONG><a name="[8c]"></a>UART_Receive_IT</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, stm32f1xx_hal_uart.o(i.UART_Receive_IT))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; HAL_UART_Receive_IT
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = UART_Receive_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
+<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
@@ -2025,12 +2034,12 @@ Local Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
-<P><STRONG><a name="[98]"></a>UART_WaitOnFlagUntilTimeout</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, stm32f1xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout))
+<P><STRONG><a name="[96]"></a>UART_WaitOnFlagUntilTimeout</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, stm32f1xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
 
 <P><STRONG><a name="[bb]"></a>accel_self_test</STRONG> (Thumb, 164 bytes, Stack size 48 bytes, inv_mpu.o(i.accel_self_test))
@@ -2050,7 +2059,7 @@ Local Symbols
 <P><STRONG><a name="[bc]"></a>get_accel_prod_shift</STRONG> (Thumb, 168 bytes, Stack size 24 bytes, inv_mpu.o(i.get_accel_prod_shift))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = get_accel_prod_shift &rArr; MPU_Read_Len &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
@@ -2060,8 +2069,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = get_st_biases &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
@@ -2070,7 +2079,7 @@ Local Symbols
 <P><STRONG><a name="[e8]"></a>gyro_self_test</STRONG> (Thumb, 256 bytes, Stack size 48 bytes, inv_mpu.o(i.gyro_self_test))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = gyro_self_test &rArr; MPU_Read_Len &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
@@ -2085,7 +2094,7 @@ Local Symbols
 <P><STRONG><a name="[f1]"></a>set_int_enable</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, inv_mpu.o(i.set_int_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = set_int_enable &rArr; MPU_Write_Len &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_configure_fifo
