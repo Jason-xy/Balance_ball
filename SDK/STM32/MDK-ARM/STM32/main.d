@@ -38,6 +38,8 @@
 .\stm32\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\stm32\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\stm32\main.o: ..\Drivers\Hardware\inc\motor.h
+.\stm32\main.o: ../Core/Inc/pid.h
+.\stm32\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\stm32\main.o: ../Core/Inc/i2c.h
 .\stm32\main.o: ../Core/Inc/tim.h
 .\stm32\main.o: ../Core/Inc/gpio.h

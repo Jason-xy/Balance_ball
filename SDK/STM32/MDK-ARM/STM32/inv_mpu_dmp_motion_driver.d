@@ -41,4 +41,6 @@
 .\stm32\inv_mpu_dmp_motion_driver.o: ..\Drivers\Hardware\inc\screen.h
 .\stm32\inv_mpu_dmp_motion_driver.o: ../Core/Inc/usart.h
 .\stm32\inv_mpu_dmp_motion_driver.o: ..\Drivers\Hardware\inc\motor.h
+.\stm32\inv_mpu_dmp_motion_driver.o: ../Core/Inc/pid.h
+.\stm32\inv_mpu_dmp_motion_driver.o: ../Core/Inc/main.h
 .\stm32\inv_mpu_dmp_motion_driver.o: ../Core/Inc/i2c.h

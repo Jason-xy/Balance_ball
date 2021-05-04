@@ -35,6 +35,9 @@
 .\stm32\usart.o: ..\Drivers\Hardware\inc\screen.h
 .\stm32\usart.o: ../Core/Inc/usart.h
 .\stm32\usart.o: ..\Drivers\Hardware\inc\motor.h
+.\stm32\usart.o: ../Core/Inc/pid.h
+.\stm32\usart.o: ../Core/Inc/main.h
+.\stm32\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\stm32\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\stm32\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\stm32\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

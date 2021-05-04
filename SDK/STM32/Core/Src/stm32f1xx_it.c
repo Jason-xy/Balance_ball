@@ -212,11 +212,11 @@ void TIM1_UP_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_UP_IRQn 1 */
   if(mainEventCount == 1){
-	
+		
   }else if(mainEventCount == 2){
-	  //readDistance();
+		
   }else if(mainEventCount == 3){
-	  //readSetDistance();
+		
   }else if(mainEventCount == 4){
 	  
   }else if(mainEventCount == 5){

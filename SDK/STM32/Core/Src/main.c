@@ -114,6 +114,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim1);
 	HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
   HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 1);
+	HAL_Delay(2000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,7 +131,10 @@ int main(void)
 		sendSetDistance();
 		drawWaves();
 		
-		moveServo(servoID, Position, Time);      
+		DistanceCalculate();
+		DistanceRingOUT();
+		MotorOutput();
+		//moveServo(servoID, Position, Time);      
 	
     /* USER CODE END WHILE */
 

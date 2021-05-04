@@ -36,6 +36,7 @@ extern "C" {
 #include "inv_mpu_dmp_motion_driver.h"
 #include "screen.h"
 #include "motor.h"
+#include "pid.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

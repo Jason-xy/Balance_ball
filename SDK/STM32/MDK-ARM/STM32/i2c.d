@@ -39,3 +39,5 @@
 .\stm32\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\stm32\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\stm32\i2c.o: ..\Drivers\Hardware\inc\motor.h
+.\stm32\i2c.o: ../Core/Inc/pid.h
+.\stm32\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

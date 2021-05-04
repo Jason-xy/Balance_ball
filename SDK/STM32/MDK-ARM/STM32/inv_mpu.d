@@ -40,3 +40,4 @@
 .\stm32\inv_mpu.o: ../Core/Inc/usart.h
 .\stm32\inv_mpu.o: ../Core/Inc/main.h
 .\stm32\inv_mpu.o: ..\Drivers\Hardware\inc\motor.h
+.\stm32\inv_mpu.o: ../Core/Inc/pid.h
