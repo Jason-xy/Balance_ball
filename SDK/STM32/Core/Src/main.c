@@ -47,19 +47,19 @@
 
 /* USER CODE BEGIN PV */
 
-//鍏ㄥ眬鍙橀噺
-short Degree_Mutex = 1;//瑙掑害浜掓枼
-float Degree;//妯潌瑙掑害
-short Distance_Mutex = 1;//璺濈浜掓枼
-short Distance;//灏忕悆瀹為檯璺濈
-short SetDistance_Mutex = 1;//鐩爣璺濈浜掓枼
-short SetDistance;//灏忕悆鐩爣璺濈
-char usartScreenSend[50] = {0};//涓插彛灞忓彂閫佺紦鍐插尯
-uint8_t usartScreenReceive[10] = {0};//涓插彛灞忔帴鏀剁紦鍐插尯
-uint8_t usartDistanceReceive[10] = {0};//OpenMV鎺ユ敹缂撳啿
-uint8_t servoID = 1;//鑸垫満ID
-uint16_t Position = 0;//鐩爣浣嶇疆
-uint16_t Time = 0;//鏃堕棿闄愬埗
+//全局变量
+short Degree_Mutex = 1;//角度互斥
+float Degree;//横杆角度
+short Distance_Mutex = 1;//距离互斥
+short Distance;//小球实际距离
+short SetDistance_Mutex = 1;//目标距离互斥
+short SetDistance;//小球目标距离
+char usartScreenSend[50] = {0};//串口屏发送缓冲区
+uint8_t usartScreenReceive[10] = {0};//串口屏接收缓冲区
+uint8_t usartDistanceReceive[10] = {0};//OpenMV接收缓冲
+uint8_t servoID = 1;//舵机ID
+uint16_t Position = 0;//目标位置
+uint16_t Time = 0;//时间限制
 
 
 
@@ -112,7 +112,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   mpu_dmp_init();
   HAL_TIM_Base_Start_IT(&htim1);
-	HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
+  HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
   HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 1);
 	HAL_Delay(2000);
   /* USER CODE END 2 */
@@ -131,9 +131,6 @@ int main(void)
 		sendSetDistance();
 		drawWaves();
 		
-		DistanceCalculate();
-		DistanceRingOUT();
-		MotorOutput();
 		//moveServo(servoID, Position, Time);      
 	
     /* USER CODE END WHILE */

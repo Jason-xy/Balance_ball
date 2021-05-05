@@ -22,13 +22,13 @@
 
 /* USER CODE BEGIN 0 */
 #define MPU_I2C hi2c1
-//IIC杩炵画鍐???
-//addr:鍣ㄤ欢鍦板潃
-//reg:瑕佸啓鐨勫瘎瀛樺櫒鍦板潃
-//len:瑕佸啓鐨勯暱搴???
-//buf:鍐欐暟鎹殑鏁版嵁瀛樺偍绌洪棿?
-//杩斿洖鍊?:0,姝ｅ父
-//      鍏朵粬,閿欒浠ｇ爜
+//IIC连续写
+//addr:器件地址
+//reg:要写的寄存器地址
+//len:要写的长度
+//buf:写数据的数据存储空间?
+//返回值:0,正常
+//      其他,错误代码
 uint8_t MPU_Write_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
 {
   extern I2C_HandleTypeDef MPU_I2C;
@@ -37,13 +37,13 @@ uint8_t MPU_Write_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
   return 0;
 }
 
-//IIC杩炵画璇???
-//addr:鍣ㄤ欢鍦板潃
-//reg:瑕佽鍙栫殑瀵勫瓨鍣ㄥ湴鍧???
-//len:瑕佽鍙栫殑闀垮害
-//buf:璇诲彇鍒扮殑鏁版嵁瀛樺偍绌洪棿?
-//杩斿洖鍊???:0,姝ｅ父
-//      鍏朵粬,閿欒浠ｇ爜
+//IIC连续读
+//addr:器件地址
+//reg:要读取的寄存器地址
+//len:要读取的长度
+//buf:读取到的数据存储空间?
+//返回值:0,正常
+//      其他,错误代码
 uint8_t MPU_Read_Len(uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
 { 
   extern I2C_HandleTypeDef MPU_I2C;

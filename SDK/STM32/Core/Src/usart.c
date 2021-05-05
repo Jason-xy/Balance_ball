@@ -24,9 +24,9 @@
 uint8_t hexEND[3] = {0xFF,0xFF,0xFF};
 uint8_t usart1RxBuffer[RXBUFFERSIZE];
 uint8_t usart2RxBuffer[RXBUFFERSIZE];
-uint16_t USART1_RX_STA=0;       //鎺ユ敹鐘舵?佹爣蹇?
+uint16_t USART1_RX_STA=0;       //接收状态标志
 uint16_t USART2_RX_STA=0; 
-//閲嶅畾鍚慶搴撳嚱鏁皃rintf鍒癉EBUG_USARTx
+//重定向c库函数printf到DEBUG_USARTx
 int fputc(int ch, FILE *f)
 {
   HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
@@ -287,23 +287,23 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart->Instance == USART1)
 	{
-		if((USART1_RX_STA & 0xC000) == 0)//鎺ユ敹鏁版嵁
+		if((USART1_RX_STA & 0xC000) == 0)//接收数据
 		{
 			if(usart1RxBuffer[0] == 0x0D)
-				USART1_RX_STA |= 0x8000;//鐘舵?佽浆鎹?
+				USART1_RX_STA |= 0x8000;//状状态转换
 			else if(USART1_RX_STA < 9 && usart1RxBuffer[0] != 0x0A)
 				usartScreenReceive[USART1_RX_STA++] = usart1RxBuffer[0];
-			else//鎺ユ敹鍑洪敊
+			else//接收出错
 			{
 				USART1_RX_STA=0;
 				memset(usartScreenReceive, 0, 10);
 			}	
 		}
-		else if(USART1_RX_STA&0x8000)//鎺ユ敹瀹屾垚
+		else if(USART1_RX_STA&0x8000)//接收完成
 		{
 			 readSetDistance();
 		}
-		else//鍏朵粬鎯呭喌
+		else//其他情况
 		{
 			USART1_RX_STA=0;
 			memset(usartScreenReceive, 0, 10);
@@ -311,23 +311,23 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	}
 	else if(huart->Instance == USART2)
 	{
-		if((USART2_RX_STA & 0xC000) == 0)//鎺ユ敹鏁版嵁
+		if((USART2_RX_STA & 0xC000) == 0)//接收数据
 		{   
 			if(usart2RxBuffer[0] == 0x0D)
-				USART2_RX_STA |= 0x8000;//鐘舵?佽浆鎹?
+				USART2_RX_STA |= 0x8000;//状态转换
 			else if(USART2_RX_STA < 9)
 				usartDistanceReceive[USART2_RX_STA++] = usart2RxBuffer[0];
-			else//鎺ユ敹鍑洪敊
+			else//接收出错
 			{
 				USART2_RX_STA=0;
 				memset(usartDistanceReceive, 0, 10);
 			}	
 		}
-		else if(USART2_RX_STA&0x8000)//鎺ユ敹瀹屾垚
+		else if(USART2_RX_STA&0x8000)//接收完成
 		{
 			 readDistance();
 		}
-		else//鍏朵粬鎯呭喌
+		else//其他情况
 		{
 			USART2_RX_STA=0;
 			memset(usartDistanceReceive, 0, 10);
@@ -341,8 +341,8 @@ void readDistance(void){
 		Distance = atoi((char*)usartDistanceReceive);
 		Distance_Mutex = 1;
 	}
-	USART2_RX_STA = 0;//娓呯┖鏍囧織
-	memset(usartDistanceReceive, 0, 10);//娓呯┖缂撳啿
+	USART2_RX_STA = 0;//清空标志
+	memset(usartDistanceReceive, 0, 10);//清空缓冲
 }
 
 void readSetDistance(void){
@@ -351,8 +351,8 @@ void readSetDistance(void){
 		SetDistance = atoi((char*)usartScreenReceive);
 		SetDistance_Mutex = 1;
 	}
-	USART1_RX_STA = 0;//娓呯┖鏍囧織
-	memset(usartScreenReceive, 0, 10);//娓呯┖缂撳啿
+	USART1_RX_STA = 0;//清空标志
+	memset(usartScreenReceive, 0, 10);//清空缓冲
 	
 }
 /* USER CODE END 1 */

@@ -1,11 +1,11 @@
 #include "screen.h"
 
-//å‘é€ç»“æŸ
+//·¢ËÍ½áÊø
 void sendEnd(void){
 	HAL_UART_Transmit(&USART_SCREEN, hexEND, 3, 0xfff);
 }
 
-//å‘é€è§’åº¦
+//·¢ËÍ½Ç¶È
 void sendDegree(void){
 	memset(usartScreenSend, 0, 50*sizeof(char));
 	if(Degree_Mutex){
@@ -17,7 +17,7 @@ void sendDegree(void){
 	}
 }
 
-//å‘é€è·ç¦»
+//·¢ËÍ¾àÀë
 void sendDistance(void){
 	memset(usartScreenSend, 0, 50*sizeof(char));
 	if(Distance_Mutex){
@@ -29,7 +29,7 @@ void sendDistance(void){
 	}
 }
 
-//å‘é€ç›®æ ‡è·ç¦»
+//·¢ËÍÄ¿±ê¾àÀë
 void sendSetDistance(void){
 	memset(usartScreenSend, 0, 50*sizeof(char));
 	if(SetDistance_Mutex){
@@ -41,7 +41,7 @@ void sendSetDistance(void){
 	}
 }
 
-//æ˜¾ç¤ºæ³¢å½¢
+//ÏÔÊ¾²¨ĞÎ
 void drawWaves(void){
 	memset(usartScreenSend, 0, 50*sizeof(char));
 	if(SetDistance_Mutex){

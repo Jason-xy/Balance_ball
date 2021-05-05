@@ -1,30 +1,35 @@
 #include "pid.h"
 
-//鍏ㄥ眬鍙橀噺
-PID DistanceRingPID = {1, 0.1, 0.1};
+//全局变量
+PID DistanceRingPID = {1, 0.1, -0.1};
 
-//PID鏇存柊鍙傛暟
+//PID更新参数
 float ErrorDistance = 0;
+float SumError = 0;
 float NowDistance = 0;
 float PreDistance = 0;
 float DistanceOUT = 0;
 float Speed = 0;
-float TimeCycle = 20;
+float TimeCycle = 5;
 float MotorOUT = 0;
 float MotorTime = 0;
 float PreMotorOUT = 0;
 
+//距离环计算
 void DistanceCalculate(void){
 	ErrorDistance = Distance - SetDistance;
+	SumError += ErrorDistance;
 	NowDistance = ErrorDistance * 0.7f + PreDistance * 0.3f;
 	Speed = (PreDistance - NowDistance)/TimeCycle;
 	
 }
 
+//距离环输出
 void DistanceRingOUT(void){
-    DistanceOUT = 710.0f - (NowDistance * DistanceRingPID.P + Speed * DistanceRingPID.D); 
+    DistanceOUT = 710.0f - (NowDistance * DistanceRingPID.P + SumError * DistanceRingPID.I + Speed * DistanceRingPID.D); 
 }
 
+//电机输出
 void MotorOutput(void){
 	MotorOUT = DistanceOUT;
 	MotorTime = 10.0f - Speed;

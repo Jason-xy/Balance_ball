@@ -5,15 +5,15 @@
 #define USART_SCREEN huart1
 
 
-//å‘é€ç»“æŸ
+//·¢ËÍ½áÊø
 void sendEnd(void);
-//å‘é€è·ç¦»
+//·¢ËÍ¾àÀë
 void sendDistance(void);
-//ç›®æ ‡è·ç¦»
+//Ä¿±ê¾àÀë
 void sendSetDistance(void);
-//æ˜¾ç¤ºæ³¢å½¢
+//ÏÔÊ¾²¨ĞÎ
 void drawWaves(void);
-//å‘é€è§’åº¦
+//·¢ËÍ½Ç¶È
 void sendDegree(void);
 
 #endif /* __SCREEN_H__ */
