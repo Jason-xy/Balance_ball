@@ -2,7 +2,7 @@
 #RX B11
 
 ball_threshold=(22, 100, 21, 127, -128, 127)
-area=(0,60,320,30)
+area=(0,60,320,60)
 distance=300  #摄像头到杆的距离，单位毫米
 redball_blob=100  #小球的初始色块大小，长*宽
 
@@ -62,7 +62,7 @@ def find_ball():
     blobs = img.find_blobs([ball_threshold], roi=area)
     for blob in blobs:
         blob_area = blob[2] * blob[3]
-        if (blob_area > max_size):
+        if (blob_area > max_size)and(blob[2]+8>blob[3])and(blob[2]-8<blob[3])and(blob_area>20):
             max_blob = blob
             max_size = blob_area
     return max_blob

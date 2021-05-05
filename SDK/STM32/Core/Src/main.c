@@ -129,9 +129,9 @@ int main(void)
 		sendDegree();
 		sendDistance();
 		sendSetDistance();
-		drawWaves();
+		drawWaves(); 
 		
-		//moveServo(servoID, Position, Time);      
+		MotorOutput();
 	
     /* USER CODE END WHILE */
 

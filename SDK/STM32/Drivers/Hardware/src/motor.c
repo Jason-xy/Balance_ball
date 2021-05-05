@@ -37,7 +37,7 @@ void moveServo(uint8_t servoID, uint16_t Position, uint16_t Time)
 	LobotTxBuf[9] = GET_HIGH_BYTE(Position);  //取得目标位置的高八位
 
 	//uartWriteBuf(LobotTxBuf, 10);
-	HAL_UART_Transmit(&huart3, LobotTxBuf, 10, 0xff);
+	HAL_UART_Transmit(&huart3, LobotTxBuf, 10, 0xf);
 }
 
 void getBatteryVoltage(void)
