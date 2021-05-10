@@ -121,16 +121,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		if(Degree_Mutex){
-		Degree_Mutex = 0;
-		mpu_dmp_get_data(&Degree, &yaw, &row);
-		Degree_Mutex = 1;
-		}
-		sendDegree();
-		sendDistance();
+//		if(Degree_Mutex){
+//		Degree_Mutex = 0;
+//		mpu_dmp_get_data(&Degree, &yaw, &row);
+//		Degree_Mutex = 1;
+//		}
+//		sendDegree();
+//		sendDistance();
 		sendSetDistance();
 		drawWaves(); 
-		
+		HAL_Delay(5);
 		MotorOutput();
 	
     /* USER CODE END WHILE */
