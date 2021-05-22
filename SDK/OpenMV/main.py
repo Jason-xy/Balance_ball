@@ -31,6 +31,7 @@ sensor.skip_frames(20)  # 跳过前20帧
 sensor.set_auto_whitebal(False)  # 关闭自动白平衡
 sensor.set_auto_gain(False)  # 关闭自动增益
 sensor.set_contrast(+3)
+
 clock = time.clock() # 跟踪FPS帧率
 uart = UART(3, 19200) #初始化串口三
 
@@ -90,8 +91,8 @@ def draw_figure():
     w = blob[2]+6
     h = blob[3]+6
     outside_rect = (x,y,w,h)
-    img.draw_rectangle(blob[0:4])  # rect
-    img.draw_rectangle(outside_rect[0:4])  # rect
+    #img.draw_rectangle(blob[0:4])  # rect
+    #img.draw_rectangle(outside_rect[0:4])  # rect
     img.draw_cross(blob[5], blob[6])  # cx,cy
 
 def process_current_frame():
@@ -102,6 +103,7 @@ def process_current_frame():
     if blob!=0:
         location=location1(blob)   #选取位置计算方式和验证
         draw_figure()
+        #img.draw_string(blob[5]+4, blob[6]+4, "location="+"%.3f" %location,color=(255,0,0))
         prioprioblob=prioblob
         prioblob=blob
         #没输出就是没有找到小球
