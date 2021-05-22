@@ -28,6 +28,7 @@ if sensor.get_id() == sensor.OV7725:
 sensor.set_pixformat(sensor.RGB565)  # 设置为rgb
 sensor.set_framesize(sensor.QVGA)  # 设置图像大小
 sensor.skip_frames(20)  # 跳过前20帧
+sensor.set_auto_exposure(1)
 sensor.set_auto_whitebal(False)  # 关闭自动白平衡
 sensor.set_auto_gain(False)  # 关闭自动增益
 sensor.set_contrast(+3)
@@ -43,7 +44,8 @@ def find_ball():
     target_ball_size=0
     #先查找色块
     img = sensor.snapshot().lens_corr(strength=1.1, zoom=1.0)
-    blobs = img.find_blobs([ball_threshold], roi=area,pixels_threshold=30)
+    blobs = img.find_blobs([ball_threshold], roi=area,pixels_threshold=20)
+
     for i in blobs:
         i_size=i[2]*i[3]
         print(i_size)
@@ -77,7 +79,8 @@ def location1(blob):
     length=305  #单位为毫米
     x=305*(x/320)
     h=str(int(x))
-    uart.write(h+"\r\n")
+    if h!=0:
+        uart.write(h+"\r\n")
     #""+"\r\n"
     #print(h+"\r\n")
     print(h)
