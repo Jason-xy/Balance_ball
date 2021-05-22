@@ -1,7 +1,7 @@
 #RX B11
 #TX B10
 
-ball_threshold=(0, 100, 40, 127, -128, 127)#色彩阙值
+ball_threshold=(0, 100, 50, 127, -128, 127)#色彩阙值
 area=[0,60,320,40]#ROI
 area_HD=[0,70,30,30]
 length_and_width_difference=20#图像的长宽差，限制阙值
@@ -30,6 +30,8 @@ sensor.set_framesize(sensor.QVGA)  # 设置图像大小
 sensor.skip_frames(20)  # 跳过前20帧
 sensor.set_auto_whitebal(False)  # 关闭自动白平衡
 sensor.set_auto_gain(False)  # 关闭自动增益
+sensor.set_contrast(+3)
+
 clock = time.clock() # 跟踪FPS帧率
 uart = UART(3, 19200) #初始化串口三
 
@@ -41,7 +43,7 @@ def find_ball():
     target_ball_size=0
     #先查找色块
     img = sensor.snapshot().lens_corr(strength=1.1, zoom=1.0)
-    blobs = img.find_blobs([ball_threshold], roi=area,pixels_threshold=20)
+    blobs = img.find_blobs([ball_threshold], roi=area,pixels_threshold=30)
     for i in blobs:
         i_size=i[2]*i[3]
         print(i_size)
