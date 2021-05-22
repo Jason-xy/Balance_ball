@@ -32,9 +32,10 @@ void DistanceCalculate(void){
 //距离环输出
 void DistanceRingOUT(void){
 		if(ErrorDistance > 20)
-			DistanceOUT = 660.0f - (NowDistance * DistanceRingPID.P  - 10.0f * Speed * DistanceRingPID.D);
+			DistanceOUT = 679.0f - (NowDistance * DistanceRingPID.P  - 10.0f * Speed * DistanceRingPID.D);
 		else
-			DistanceOUT = 660.0f - (NowDistance * DistanceRingPID.P + SumError * DistanceRingPID.I - 10.0f * Speed * DistanceRingPID.D); 
+			DistanceOUT = 679.0f - (NowDistance * DistanceRingPID.P + SumError * DistanceRingPID.I - 10.0f * Speed * DistanceRingPID.D); 
+		Degree = DistanceOUT;
 }
 
 //电机输出
@@ -43,8 +44,8 @@ void MotorOutput(void){
 	MotorTime = 10.0f - Speed;
 	if(abs((int)PreMotorOUT - (int)MotorOUT) < 50){
 		
-		if(MotorOUT > 750)MotorOUT = 750;
-		else if(MotorOUT < 570)MotorOUT = 570;
+		if(MotorOUT > 770)MotorOUT = 770;
+		else if(MotorOUT < 590)MotorOUT = 590;
 		
 		if(MotorTime < 1)MotorTime = 1;
 		else if(MotorTime > 1)MotorTime = 1;
