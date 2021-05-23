@@ -115,6 +115,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
   HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 1);
 	HAL_Delay(2000);
+	int CtlSpeed = 5;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,7 +131,7 @@ int main(void)
 //		sendDistance();
 		sendSetDistance();
 		drawWaves(); 
-		HAL_Delay(5);
+		HAL_Delay(CtlSpeed);
 		MotorOutput();
 	
     /* USER CODE END WHILE */
