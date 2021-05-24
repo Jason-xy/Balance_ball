@@ -4,11 +4,13 @@ import math
 
 #RX B11
 #TX B10
-ball_threshold = (30, 49, 27, 60, 0, 60)  # 色彩阙值
-length_and_width_difference = 20  # 图像的长宽差，限制阙值
-area = [0,35,160,10]#ROI
+ball_threshold = (0, 100, 14, 127, -64, 127)  # 色彩阙值
+length_and_width_difference = 6  # 图像的长宽差，限制阙值
+area = [0,35,160,8]#ROI
 MAX_Size = 80  # 最大面积
 MIN_Size = 10  # 最小面积
+preX = 0
+
 
 # 初始化摄像头
 clock = time.clock()# 跟踪FPS帧率
@@ -19,7 +21,7 @@ if sensor.get_id() == sensor.OV7725:
 sensor.set_pixformat(sensor.RGB565)  # 设置为rgb
 sensor.set_framesize(sensor.QQVGA)  # 设置图像大小
 sensor.skip_frames(20)  # 跳过前20帧
-sensor.set_auto_exposure(False,2000)
+sensor.set_auto_exposure(False,3500)
 sensor.set_auto_whitebal(False)  # 关闭自动白平衡
 sensor.set_auto_gain(False)  # 关闭自动增益
 
@@ -35,8 +37,8 @@ def process_current_frame():
     blob=find_ball()
 
     if blob!=0:
-        area[0] = blob[0] - 20
-        area[2] = blob[2] + 40
+        area[0] = blob[0] - 10
+        area[2] = blob[2] + 30
         location=location1(blob)   #选取位置计算方式和验证
         draw_figure()
         prioblob=blob
@@ -48,9 +50,10 @@ def process_current_frame():
 
 def find_ball():
     global img
+    global preX
     target_ball = 0
     img = sensor.snapshot().lens_corr(strength=0.5, zoom=1.0)
-    blobs = img.find_blobs([ball_threshold], roi=area, pixels_threshold=5)
+    blobs = img.find_blobs([ball_threshold], roi=area, pixels_threshold=3)
     #print(blobs)
 
     for i in blobs:
@@ -59,8 +62,11 @@ def find_ball():
         if i_size > i_MAXSize and i_size > MIN_Size and math.fabs(i[2] - i[3]) < length_and_width_difference and i_size < MAX_Size:
             i_MAXSize = i_size
             target_ball = i
-            print(target_ball)
-    return target_ball
+            if math.fabs(preX - target_ball[5]) < 10:
+                print(target_ball)
+                return target_ball
+            preX = target_ball[5]
+        return 0
 
 def location1(blob):
     #最简单的根据小球中心点坐标判定偏移
