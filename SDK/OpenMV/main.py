@@ -1,19 +1,20 @@
-#TX B10
 #RX B11
+#TX B10
 
-ball_threshold=(22, 100, 21, 127, -128, 127)
-area=(0,60,320,30)
-distance=300  #摄像头到杆的距离，单位毫米
-redball_blob=100  #小球的初始色块大小，长*宽
+ball_threshold=(0, 100, 50, 127, -128, 127)#色彩阙值
+area=[0,60,320,40]#ROI
+area_HD=[0,70,30,30]
+length_and_width_difference=20#图像的长宽差，限制阙值
 
 
 #图像数据
 img=0
-fps=0
 blob=0
 prioblob=0
 flag=0 #运行标志位
+prioprioblob=0
 
+#初始化阶段
 import sensor,image,time,lcd
 from pyb import UART
 import math
@@ -27,64 +28,64 @@ if sensor.get_id() == sensor.OV7725:
 sensor.set_pixformat(sensor.RGB565)  # 设置为rgb
 sensor.set_framesize(sensor.QVGA)  # 设置图像大小
 sensor.skip_frames(20)  # 跳过前20帧
+sensor.set_auto_exposure(1)
 sensor.set_auto_whitebal(False)  # 关闭自动白平衡
 sensor.set_auto_gain(False)  # 关闭自动增益
-#lcd.init() # Initialize the lcd screen.
+sensor.set_contrast(+3)
 
-
-#初始化串口3
-uart = UART(3, 19200)
-
-
-def process_current_frame():
-    global flag
-    global blob
-    global prioblob
-    blob=find_ball()
-    if flag==0:
-        prioblob=blob
-        flag=1
-    if blob!=0:
-        location=location1(blob)   #选取位置计算方式
-        draw_figure()
-        img.draw_string(blob[5]+4, blob[6]+4, "location="+"%.3f" %location,color=(255,0,0))
-        prioblob=blob
-
-
+clock = time.clock() # 跟踪FPS帧率
+uart = UART(3, 19200) #初始化串口三
 
 def find_ball():
+    #引入和声明数据
     global fps
     global img
-    max_blob=0
-    max_size=0
-    fps=clock.tick()
-    img = sensor.snapshot().lens_corr(strength=1.3, zoom=1.0)
-    blobs = img.find_blobs([ball_threshold], roi=area)
-    for blob in blobs:
-        blob_area = blob[2] * blob[3]
-        if (blob_area > max_size):
-            max_blob = blob
-            max_size = blob_area
-    return max_blob
+    target_ball=0
+    target_ball_size=0
+    #先查找色块
+    img = sensor.snapshot().lens_corr(strength=1.1, zoom=1.0)
+    blobs = img.find_blobs([ball_threshold], roi=area,pixels_threshold=20)
+
+    for i in blobs:
+        i_size=i[2]*i[3]
+        print(i_size)
+        if i_size>target_ball_size and (i[2]+length_and_width_difference>i[3]) and (i[2]-length_and_width_difference<i[3])and (i_size<400):
+            target_ball=i
+            target_ball_size=i_size
+
+    if(target_ball_size==0):
+        return 0
+
+    print(target_ball)
+    return target_ball
 
 
+def init_data():
+    global area
+    global prioblob
+    global prioprioblob
+    global blob
+    while prioblob==0:
+        blob=find_ball()
+        prioblob=blob
+        prioprioblob=blob
 
 def location1(blob):
+    area_HD[0]=blob[5]-15
+#    for c in img.find_circles(threshold = 1000, x_margin = 10, y_margin = 10, r_margin = 10,r_min = 3, r_max =5, r_step = 2,area=area_HD):
+#        if(c.x()+2>blob[5]) and (c.x()-2<blob[5]):
     #最简单的根据小球中心点坐标判定偏移
     x=blob[5]
     length=305  #单位为毫米
     x=305*(x/320)
     h=str(int(x))
-    uart.write(h+"\r\n")
-#""+"\r\n"
-    print(h+"\r\n")
+    if h!=0:
+        uart.write(h+"\r\n")
+    #""+"\r\n"
+    #print(h+"\r\n")
+    print(h)
     return x
 
-#def location2(blob):
-    #根据小球的大小计算偏移量
-
-#def location3(blob)
-    #根据小球的速度计算偏移量
 
 
 def draw_figure():
@@ -93,12 +94,28 @@ def draw_figure():
     w = blob[2]+6
     h = blob[3]+6
     outside_rect = (x,y,w,h)
-    img.draw_rectangle(blob[0:4])  # rect
-    img.draw_rectangle(outside_rect[0:4])  # rect
+    #img.draw_rectangle(blob[0:4])  # rect
+    #img.draw_rectangle(outside_rect[0:4])  # rect
     img.draw_cross(blob[5], blob[6])  # cx,cy
+
+def process_current_frame():
+    global blob
+    global prioblob
+    global prioprioblob
+    blob=find_ball()
+    if blob!=0:
+        location=location1(blob)   #选取位置计算方式和验证
+        draw_figure()
+        #img.draw_string(blob[5]+4, blob[6]+4, "location="+"%.3f" %location,color=(255,0,0))
+        prioprioblob=prioblob
+        prioblob=blob
+        #没输出就是没有找到小球
+
+
 
 
 while(True):
-    time.sleep_ms(20)
+    clock.tick()
     process_current_frame()
-    #lcd.display(sensor.snapshot())
+    print("FPS:", clock.fps())
+    print("*****************************************")

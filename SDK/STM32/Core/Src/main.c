@@ -110,28 +110,29 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  mpu_dmp_init();
+  //mpu_dmp_init();
   HAL_TIM_Base_Start_IT(&htim1);
   HAL_UART_Receive_IT(&huart1, usart1RxBuffer, 1);
   HAL_UART_Receive_IT(&huart2, usart2RxBuffer, 1);
 	HAL_Delay(2000);
+	int CtlSpeed = 5;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		if(Degree_Mutex){
-		Degree_Mutex = 0;
-		mpu_dmp_get_data(&Degree, &yaw, &row);
-		Degree_Mutex = 1;
-		}
+//		if(Degree_Mutex){
+//		Degree_Mutex = 0;
+//		mpu_dmp_get_data(&Degree, &yaw, &row);
+//		Degree_Mutex = 1;
+//		}
 		sendDegree();
-		sendDistance();
+//		sendDistance();
 		sendSetDistance();
-		drawWaves();
-		
-		//moveServo(servoID, Position, Time);      
+		drawWaves(); 
+		HAL_Delay(CtlSpeed);
+		MotorOutput();
 	
     /* USER CODE END WHILE */
 
