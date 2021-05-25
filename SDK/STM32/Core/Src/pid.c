@@ -1,7 +1,7 @@
 #include "pid.h"
 
 //全局变量
-PID DistanceRingPID = {0.8, 0.00, 12};
+PID DistanceRingPID = {0.8, 0.00, 15};
 
 //PID更新参数
 float ErrorDistance = 0;
@@ -15,7 +15,8 @@ float MotorOUT = 0;
 float MotorTime = 0;
 float PreMotorOUT = 0;
 float PreSetDistance = 0;
-float Balance = 675;
+float Balance = 670;
+float mul = 0.7;
 
 //距离环计算
 void DistanceCalculate(void){
@@ -35,7 +36,7 @@ void DistanceRingOUT(void){
 		if(ErrorDistance > 5)
 			DistanceOUT = Balance - (NowDistance * DistanceRingPID.P  - 10.0f * Speed * DistanceRingPID.D);
 		else
-			DistanceOUT = Balance - (NowDistance * DistanceRingPID.P  - 10.0f * Speed * DistanceRingPID.D * 0.3); 
+			DistanceOUT = Balance - (NowDistance * DistanceRingPID.P  - 10.0f * Speed * DistanceRingPID.D * mul); 
 		Degree = DistanceOUT;
 }
 
